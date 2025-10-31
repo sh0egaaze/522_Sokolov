@@ -1,0 +1,42 @@
+﻿<Page x:Class="_522_Sokolov.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_522_Sokolov.Pages"
+      mc:Ignorable="d" 
+      Title="AuthPage">
+    <Grid>
+        <GroupBox Header="Авторизация" Style="{DynamicResource GroupBoxStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" x:Name="labelLogin" Content="Логин" Style="{DynamicResource BaseLabelStyle}"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxLogin" ToolTip="Введите логин или почту" TextChanged="TextBoxLogin_TextChanged" Style="{DynamicResource BaseTextBoxStyle}"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="txtHintLogin" Text="Введите логин" IsHitTestVisible="False" MouseLeftButtonUp="txtHintLogin_MouseLeftButtonUp" Style="{DynamicResource BaseTextStyle}"/>
+                <Label Grid.Row="1" Grid.Column="0" x:Name="labelPass" Content="Пароль" Style="{DynamicResource BaseLabelStyle}"/>
+                <PasswordBox Grid.Row="1" Grid.Column="1" x:Name="PasswordBox" ToolTip="Введите пароль" PasswordChanged="PasswordBox_PasswordChanged" Style="{DynamicResource BasePasswordBoxStyle}"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="txtHintPass" Text="Введите пароль" IsHitTestVisible="False" MouseLeftButtonUp="txtHintPass_MouseLeftButtonUp" Style="{DynamicResource BaseTextStyle}"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Капча" x:Name="labelCaptcha" Style="{DynamicResource BaseLabelStyle}" Visibility="Hidden"/>
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="captcha" Visibility="Hidden" Foreground="Red" FontStyle="Italic" FontWeight="Heavy" FontStretch="UltraCondensed" IsReadOnly="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource BaseTextBoxStyle}"/>
+                <TextBox Grid.Row="3" Grid.Column="1" x:Name="captchaInput" Visibility="Hidden" TextWrapping="Wrap" Style="{DynamicResource BaseTextBoxStyle}"/>
+                <Button Grid.Row="4" Grid.Column="1" x:Name="ButtonEnter" Content="Вход" ToolTip="Кнопка входа" Click="ButtonEnter_OnClick" Style="{DynamicResource BaseButtonStyle}"/>
+                <Button Grid.Row="4" Grid.Column="1" x:Name="submitCaptcha" Content="Подтвердить" ToolTip="Подтвердить ввод капчи" Visibility="Hidden" Click="submitCaptcha_Click" Style="{DynamicResource BaseButtonStyle}"/>
+                <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal">
+                    <Button x:Name="ButtonReg" Content="Регистрация" ToolTip="Кнопка регистрации" Click="ButtonReg_Click" Style="{DynamicResource BaseButtonStyle}"/>
+                    <Button x:Name="ButtonChangePassword" Content="Смена пароля" ToolTip="Кнопка смены пароля" Click="ButtonChangePassword_Click" Style="{DynamicResource BaseButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Page>

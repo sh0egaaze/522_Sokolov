@@ -1,0 +1,35 @@
+﻿<Page x:Class="_522_Sokolov.Pages.ChangePassPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_522_Sokolov.Pages"
+      mc:Ignorable="d" 
+      Title="ChangePassPage">
+    <Grid>
+        <GroupBox Header="Смена пароля" Style="{StaticResource GroupBoxStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Логин" Style="{StaticResource BaseLabelStyle}"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="TbLogin" Style="{StaticResource BaseTextBoxStyle}"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Текущий пароль" Style="{StaticResource BaseLabelStyle}"/>
+                <PasswordBox Grid.Row="1" Grid.Column="1" x:Name="CurrentPasswordBox" Style="{StaticResource BasePasswordBoxStyle}"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Новый пароль" Style="{StaticResource BaseLabelStyle}"/>
+                <PasswordBox Grid.Row="2" Grid.Column="1" x:Name="NewPasswordBox" Style="{StaticResource BasePasswordBoxStyle}"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Подтвердите пароль" Style="{StaticResource BaseLabelStyle}"/>
+                <PasswordBox Grid.Row="3" Grid.Column="1" x:Name="ConfirmPasswordBox" Style="{StaticResource BasePasswordBoxStyle}"/>
+                <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="SaveButton" Content="Сохранить" Click="SaveButton_Click" Style="{StaticResource BaseButtonStyle}" HorizontalAlignment="Center"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Page>

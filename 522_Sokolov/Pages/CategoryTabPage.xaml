@@ -1,0 +1,31 @@
+﻿<Page x:Class="_522_Sokolov.Pages.CategoryTabPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_522_Sokolov.Pages"
+      mc:Ignorable="d" 
+      Title="CategoryTabPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0" x:Name="DataGridCategory" IsReadOnly="True" Style="{StaticResource BaseDataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Категория" Binding="{Binding Name}" Width="*"/>
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="ButtonEdit" Content="Редактировать" ToolTip="Редактировать данные" Click="ButtonEdit_Click" Style="{StaticResource BaseButtonStyle}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
+            <Button x:Name="ButtonAdd" ToolTip="Добавить данные" Content="Добавить" Click="ButtonAdd_Click" Style="{StaticResource BaseButtonStyle}"/>
+            <Button x:Name="ButtonDel" ToolTip="Удалить данные" Content="Удалить" Click="ButtonDel_Click" Style="{StaticResource BaseButtonStyle}" HorizontalAlignment="Right"/>
+        </StackPanel>
+    </Grid>
+</Page>
