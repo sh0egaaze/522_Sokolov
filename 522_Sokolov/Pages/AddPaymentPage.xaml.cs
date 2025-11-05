@@ -16,11 +16,15 @@ using System.Windows.Shapes;
 namespace _522_Sokolov.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddPaymentPage.xaml
+    /// Страница добавления и редактирования платежей
     /// </summary>
     public partial class AddPaymentPage : Page
     {
         private Payment _currentPayment = new Payment();
+
+        /// <summary>
+        /// Инициализация страницы с возможностью редактирования существующего платежа
+        /// </summary>
         public AddPaymentPage(Payment selectedPayment)
         {
             InitializeComponent();
@@ -34,6 +38,10 @@ namespace _522_Sokolov.Pages
                 _currentPayment = selectedPayment;
             DataContext = _currentPayment;
         }
+
+        /// <summary>
+        /// Сохранение платежа в базу данных
+        /// </summary>
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();

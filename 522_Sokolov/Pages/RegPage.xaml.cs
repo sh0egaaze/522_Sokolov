@@ -16,6 +16,9 @@ using System.Windows.Shapes;
 
 namespace _522_Sokolov.Pages
 {
+    /// <summary>
+    /// Страница регистрации новых пользователей
+    /// </summary>
     public partial class RegPage : Page
     {
         public RegPage()
@@ -24,6 +27,11 @@ namespace _522_Sokolov.Pages
             comboBxRole.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Генерирует хеш пароля с использованием SHA1
+        /// </summary>
+        /// <param name="password">Пароль для хеширования</param>
+        /// <returns>Хешированная строка пароля</returns>
         public static string GetHash(String password)
         {
             using (var hash = SHA1.Create())
@@ -52,6 +60,9 @@ namespace _522_Sokolov.Pages
             txtbxFIO.Focus();
         }
 
+        /// <summary>
+        /// Обработчик изменения текста логина - скрывает/показывает подсказку
+        /// </summary>
         private void txtbxLog_TextChanged(object sender, TextChangedEventArgs e)
         {
             lblLogHitn.Visibility = Visibility.Visible;
@@ -88,6 +99,9 @@ namespace _522_Sokolov.Pages
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия кнопки регистрации - выполняет валидацию и создание нового пользователя
+        /// </summary>
         private void regButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(txtbxLog.Text) || string.IsNullOrEmpty(txtbxFIO.Text) || string.IsNullOrEmpty(passBxFrst.Password) || string.IsNullOrEmpty(passBxScnd.Password))

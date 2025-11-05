@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace _522_Sokolov.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для CategoryTabPage.xaml
+    /// Страница для просмотра и управления категориями платежей
     /// </summary>
     public partial class CategoryTabPage : Page
     {
@@ -28,6 +28,10 @@ namespace _522_Sokolov.Pages
             this.IsVisibleChanged += Page_IsVisibleChanged;
 
         }
+
+        /// <summary>
+        /// Обновляет данные при отображении страницы
+        /// </summary>
         private void Page_IsVisibleChanged(object sender,
         DependencyPropertyChangedEventArgs e)
         {
@@ -37,15 +41,23 @@ namespace _522_Sokolov.Pages
                 DataGridCategory.ItemsSource = Entities.GetContext().Category.ToList();
             }
         }
+
+        /// <summary>
+        /// Открывает страницу добавления новой категории
+        /// </summary>
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new AddCategoryPage(null));
         }
+
+        /// <summary>
+        /// Удаляет выбранные категории с подтверждением
+        /// </summary>
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
             var categoryForRemoving =
             DataGridCategory.SelectedItems.Cast<Category>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить записи в количестве { categoryForRemoving.Count()} элементов ? ", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Вы точно хотите удалить записи в количестве {categoryForRemoving.Count()} элементов ? ", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
@@ -61,6 +73,10 @@ namespace _522_Sokolov.Pages
             }
 
         }
+
+        /// <summary>
+        /// Открывает страницу редактирования выбранной категории
+        /// </summary>
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Pages.AddCategoryPage((sender as Button).DataContext as Category));

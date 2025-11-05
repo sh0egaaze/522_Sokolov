@@ -6,6 +6,9 @@ using System.Windows.Navigation;
 
 namespace _522_Sokolov
 {
+    /// <summary>
+    /// Главное окно приложения с навигацией и сменой тем
+    /// </summary>
     public partial class MainWindow : Window
     {
         private bool _isCustomTheme = false;
@@ -16,6 +19,9 @@ namespace _522_Sokolov
             MainFrame.Navigated += MainFrame_Navigated;
         }
 
+        /// <summary>
+        /// Обработчик события навигации - обновляет заголовок окна
+        /// </summary>
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
         {
             if (MainFrame.Content is Page page)
@@ -65,6 +71,9 @@ namespace _522_Sokolov
             }
         }
 
+        /// <summary>
+        /// Загрузка окна - навигация на страницу авторизации и запуск таймера
+        /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new Pages.AuthPage());
@@ -78,6 +87,9 @@ namespace _522_Sokolov
             timer.Start();
         }
 
+        /// <summary>
+        /// Обработчик кнопки "Назад" для навигации
+        /// </summary>
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             if (MainFrame.CanGoBack)
@@ -86,11 +98,17 @@ namespace _522_Sokolov
             }
         }
 
+        /// <summary>
+        /// Обработчик кнопки смены темы оформления
+        /// </summary>
         private void ThemeButton_Click(object sender, RoutedEventArgs e)
         {
             SwitchTheme();
         }
 
+        /// <summary>
+        /// Переключение между стандартной и кастомной темами
+        /// </summary>
         private void SwitchTheme()
         {
             string dictionaryPath = _isCustomTheme ? "StandardStyles.xaml" : "CustomStyles.xaml";
@@ -134,6 +152,9 @@ namespace _522_Sokolov
             _isCustomTheme = !_isCustomTheme;
         }
 
+        /// <summary>
+        /// Обработчик закрытия окна с подтверждением
+        /// </summary>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (MessageBox.Show("Вы уверены, что хотите закрыть окно?", "Message", MessageBoxButton.YesNo) == MessageBoxResult.No)

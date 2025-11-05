@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace _522_Sokolov.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ChangePassPage.xaml
+    /// Страница для смены пароля пользователя
     /// </summary>
     public partial class ChangePassPage : Page
     {
@@ -26,6 +26,9 @@ namespace _522_Sokolov.Pages
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Генерирует SHA1 хеш для пароля
+        /// </summary>
         public static string GetHash(String password)
         {
             using (var hash = SHA1.Create())
@@ -34,6 +37,9 @@ namespace _522_Sokolov.Pages
             }
         }
 
+        /// <summary>
+        /// Сохраняет новый пароль после проверки всех условий
+        /// </summary>
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(CurrentPasswordBox.Password) ||

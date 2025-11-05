@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace _522_Sokolov.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AdminPage.xaml
+    /// Панель администратора с навигацией по разделам управления
     /// </summary>
     public partial class AdminPage : Page
     {
@@ -25,19 +25,34 @@ namespace _522_Sokolov.Pages
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Переход к таблице пользователей
+        /// </summary>
         private void BtnTab1_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new UsersTabPage());
 
         }
+
+        /// <summary>
+        /// Переход к таблице категорий
+        /// </summary>
         private void BtnTab2_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new CategoryTabPage());
         }
+
+        /// <summary>
+        /// Переход к таблице платежей
+        /// </summary>
         private void BtnTab3_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new PaymentTabPage());
         }
+
+        /// <summary>
+        /// Переход к странице с диаграммами
+        /// </summary>
         private void BtnTab4_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new DiagrammPage());

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace _522_Sokolov.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddUserPage.xaml
+    /// Страница добавления и редактирования пользователей
     /// </summary>
     public partial class AddUserPage : Page
     {

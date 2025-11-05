@@ -16,11 +16,15 @@ using System.Windows.Shapes;
 namespace _522_Sokolov.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddCategoryPage.xaml
+    /// Страница добавления и редактирования категорий платежей
     /// </summary>
     public partial class AddCategoryPage : Page
     {
         private Category _currentCategory = new Category();
+
+        /// <summary>
+        /// Инициализация страницы с возможностью редактирования существующей категории
+        /// </summary>
         public AddCategoryPage(Category selectedCategory)
         {
             InitializeComponent();
@@ -29,8 +33,11 @@ namespace _522_Sokolov.Pages
             DataContext = _currentCategory;
 
         }
-        private void ButtonSaveCategory_Click(object sender, RoutedEventArgs
-        e)
+
+        /// <summary>
+        /// Сохранение категории в базу данных
+        /// </summary>
+        private void ButtonSaveCategory_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
             if (string.IsNullOrWhiteSpace(_currentCategory.Name))
@@ -52,6 +59,10 @@ namespace _522_Sokolov.Pages
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+        /// <summary>
+        /// Очистка полей формы
+        /// </summary>
         private void ButtonClean_Click(object sender, RoutedEventArgs e)
         {
             TBCategoryName.Text = "";

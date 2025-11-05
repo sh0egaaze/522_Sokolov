@@ -16,6 +16,9 @@ using System.Windows.Shapes;
 
 namespace _522_Sokolov.Pages
 {
+    /// <summary>
+    /// Страница авторизации пользователей в системе
+    /// </summary>
     public partial class AuthPage : Page
     {
         private int failedAttempts = 0;
@@ -26,6 +29,9 @@ namespace _522_Sokolov.Pages
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Генерирует SHA1 хеш для пароля
+        /// </summary>
         public static string GetHash(String password)
         {
             using (var hash = SHA1.Create())
@@ -34,6 +40,9 @@ namespace _522_Sokolov.Pages
             }
         }
 
+        /// <summary>
+        /// Обработчик входа в систему с проверкой учетных данных
+        /// </summary>
         private void ButtonEnter_OnClick(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Password))
@@ -117,6 +126,9 @@ namespace _522_Sokolov.Pages
             }
         }
 
+        /// <summary>
+        /// Переключает видимость элементов капчи и основных полей ввода
+        /// </summary>
         public void CaptchaSwitch()
         {
             switch (captcha.Visibility)
@@ -161,6 +173,9 @@ namespace _522_Sokolov.Pages
             }
         }
 
+        /// <summary>
+        /// Генерирует новую случайную капчу
+        /// </summary>
         public void CaptchaChange()
         {
             String allowchar = " ";

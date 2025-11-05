@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace _522_Sokolov.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для UsersTabPage.xaml
+    /// Страница табличного представления пользователей для администратора
     /// </summary>
     public partial class UsersTabPage : Page
     {
@@ -27,6 +27,9 @@ namespace _522_Sokolov.Pages
             this.IsVisibleChanged += Page_IsVisibleChanged;
         }
 
+        /// <summary>
+        /// Обработчик изменения видимости страницы - обновляет данные при показе
+        /// </summary>
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (Visibility == Visibility.Visible)
@@ -41,11 +44,15 @@ namespace _522_Sokolov.Pages
         {
             NavigationService?.Navigate(new AddUserPage(null));
         }
+
+        /// <summary>
+        /// Удаляет выбранных пользователей с подтверждением операции
+        /// </summary>
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
             var usersForRemoving =
             DataGridUser.SelectedItems.Cast<User>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить записи в количестве { usersForRemoving.Count()} элементов ? ", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Вы точно хотите удалить записи в количестве {usersForRemoving.Count()} элементов ? ", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
@@ -62,6 +69,7 @@ namespace _522_Sokolov.Pages
                 }
             }
         }
+
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Pages.AddUserPage((sender as Button).DataContext as User));

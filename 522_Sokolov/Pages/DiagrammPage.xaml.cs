@@ -9,6 +9,9 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace _522_Sokolov.Pages
 {
+    /// <summary>
+    /// Страница для визуализации данных платежей в виде диаграмм и экспорта отчетов
+    /// </summary>
     public partial class DiagrammPage : Page
     {
         private Entities _context = new Entities();
@@ -29,6 +32,9 @@ namespace _522_Sokolov.Pages
             CmbDiagram.ItemsSource = Enum.GetValues(typeof(SeriesChartType));
         }
 
+        /// <summary>
+        /// Обновляет диаграмму при изменении пользователя или типа диаграммы
+        /// </summary>
         private void UpdateChart(object sender, SelectionChangedEventArgs e)
         {
             if (CmbUser.SelectedItem is User currentUser && CmbDiagram.SelectedItem is SeriesChartType currentType)
@@ -49,6 +55,9 @@ namespace _522_Sokolov.Pages
             }
         }
 
+        /// <summary>
+        /// Экспортирует данные платежей в Excel с группировкой по пользователям
+        /// </summary>
         private void BtnExportExcel_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -65,7 +74,7 @@ namespace _522_Sokolov.Pages
                 Excel.Workbook workbook = application.Workbooks.Add(Type.Missing);
                 decimal grandTotal = 0;
 
-                foreach (var user in allUsers) 
+                foreach (var user in allUsers)
                 {
                     int startRowIndex = 1;
                     Excel.Worksheet worksheet = (Excel.Worksheet)application.Worksheets.Item[allUsers.IndexOf(user) + 1];
@@ -85,7 +94,7 @@ namespace _522_Sokolov.Pages
                     var userPayments = _context.Payment
                         .Where(p => p.UserID == user.ID)
                         .OrderBy(p => p.Date)
-                        .ToList(); 
+                        .ToList();
 
                     var userCategories = userPayments
                         .GroupBy(p => p.Category)
@@ -156,6 +165,9 @@ namespace _522_Sokolov.Pages
             }
         }
 
+        /// <summary>
+        /// Экспортирует данные платежей в Word и PDF форматы
+        /// </summary>
         private void BtnExportWord_Click(object sender, RoutedEventArgs e)
         {
             try

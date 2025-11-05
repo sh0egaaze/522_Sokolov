@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace _522_Sokolov.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PaymentTabPage.xaml
+    /// Страница для просмотра и управления платежами
     /// </summary>
     public partial class PaymentTabPage : Page
     {
@@ -27,6 +27,9 @@ namespace _522_Sokolov.Pages
             this.IsVisibleChanged += Page_IsVisibleChanged;
         }
 
+        /// <summary>
+        /// Обновляет данные при отображении страницы
+        /// </summary>
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (Visibility == Visibility.Visible)
@@ -35,14 +38,22 @@ namespace _522_Sokolov.Pages
                 DataGridPayment.ItemsSource = Entities.GetContext().Payment.ToList();
             }
         }
+
+        /// <summary>
+        /// Открывает страницу добавления нового платежа
+        /// </summary>
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new AddPaymentPage(null));
         }
+
+        /// <summary>
+        /// Удаляет выбранные платежи с подтверждением
+        /// </summary>
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
             var paymentForRemoving = DataGridPayment.SelectedItems.Cast<Payment>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить записи в количестве { paymentForRemoving.Count()} элементов ? ", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Вы точно хотите удалить записи в количестве {paymentForRemoving.Count()} элементов ? ", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
@@ -58,6 +69,9 @@ namespace _522_Sokolov.Pages
             }
         }
 
+        /// <summary>
+        /// Открывает страницу редактирования выбранного платежа
+        /// </summary>
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Pages.AddPaymentPage((sender as Button).DataContext as Payment));

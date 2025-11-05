@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace _522_Sokolov.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для UserPage.xaml
+    /// Страница просмотра пользователей с фильтрацией и сортировкой
     /// </summary>
     public partial class UserPage : Page
     {
@@ -27,6 +27,9 @@ namespace _522_Sokolov.Pages
             ListUser.ItemsSource = currentUsers;
         }
 
+        /// <summary>
+        /// Очищает все примененные фильтры и сбрасывает настройки отображения
+        /// </summary>
         private void clearFiltersButton_Click_1(object sender, RoutedEventArgs e)
         {
             fioFilterTextBox.Text = "";
@@ -54,6 +57,9 @@ namespace _522_Sokolov.Pages
             UpdateUsers();
         }
 
+        /// <summary>
+        /// Обновляет список пользователей с учетом примененных фильтров и сортировки
+        /// </summary>
         private void UpdateUsers()
         {
             if (!IsInitialized)
